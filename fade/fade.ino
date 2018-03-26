@@ -3,6 +3,8 @@ int sensorPin = A0;    // select the input pin for the potentiometer
 int ledPin1 = 5; 
 int ledPin2 = 6;
 int ledPin3 = 12;  // select the pin for the LED
+//int brightness = 0;    // how bright the LED is
+//int fadeAmount = 7;    // how many points to fade the LED by
 int readValue;
 int sensorValue;  // variable to store the value coming from the sensor
 
@@ -18,28 +20,22 @@ void setup() {
 
 void loop() {
   // read the value from the sensor:
+
   
   sensorValue = analogRead(sensorPin);    
   // write the sensor value to the serial interface:
  
   Serial.println(sensorValue);
+  if(sensorValue >0 && sensorValue< 400){
   // turn the ledPin on
-  if (snesorValue>0 && sensorValue <250){
-  digitalWrite(ledPin1, HIGH);  
+  digitalWrite(ledPin1, LOW);  
+  digitalWrite(ledPin2, LOW);
+  digitalWrite(ledPin3, LOW);
   }
-   if (snesorValue> 255 && sensorValue <550){
+  if(sensorValue >401 && sensorValue< 900){     
+  digitalWrite(ledPin1, HIGH);   
   digitalWrite(ledPin2, HIGH);
-   }
-    if (snesorValue> 520 && sensorValue <750){
-  digitalWrite(ledPin3, HIGH);
-    }
-  // stop the program for <sensorValue> milliseconds:
-//  delay(sensorValue);          
-//  // turn the ledPin off:        
-//  digitalWrite(ledPin1, LOW);   
-//  digitalWrite(ledPin2, LOW);
-//  digitalWrite(ledPin3, LOW);  
-  // stop the program for for <sensorValue> milliseconds:
-  delay(25);                  
+  digitalWrite(ledPin3, HIGH);  
+  }
 }
 
