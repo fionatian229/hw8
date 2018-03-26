@@ -24,16 +24,22 @@ void loop() {
  
   Serial.println(sensorValue);
   // turn the ledPin on
+  if (sensorValue >0 && sensorValue<250){
+  digitalWrite(ledPin1, HIGH);  
+  digitalWrite(ledPin2, LOW);
+  digitalWrite(ledPin3, LOW);
+  }
+  if(sensorValue >251 && sensorValue<510){
   digitalWrite(ledPin1, HIGH);  
   digitalWrite(ledPin2, HIGH);
-  digitalWrite(ledPin3, HIGH);
-  // stop the program for <sensorValue> milliseconds:
-  delay(sensorValue);          
-  // turn the ledPin off:        
-  digitalWrite(ledPin1, LOW);   
-  digitalWrite(ledPin2, LOW);
-  digitalWrite(ledPin3, LOW);  
-  // stop the program for for <sensorValue> milliseconds:
-  delay(0);                  
+  digitalWrite(ledPin3, LOW);
+    
+  }
+   if(sensorValue >510 && sensorValue<900){ 
+  digitalWrite(ledPin1, HIGH);   
+  digitalWrite(ledPin2, HIGH);
+  digitalWrite(ledPin3, HIGH);  
+   }
+  
 }
 
